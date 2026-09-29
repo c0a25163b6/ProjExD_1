@@ -24,18 +24,21 @@ def main():
             if event.type == pg.QUIT: return
 
         key_lst = pg.key.get_pressed()
-        #演習1-1
-        kk_rct.move_ip(-1, 0)
+
+        #演習2
+        sum_mv = [-1, 0]
 
         if key_lst[pg.K_UP]:
-            kk_rct.move_ip(0, -1)
+                sum_mv[1] -= 1
         if key_lst[pg.K_DOWN]:
-                kk_rct.move_ip(0, 1)
+                sum_mv[1] += 1
         if key_lst[pg.K_LEFT]:
-                kk_rct.move_ip(-1, 0)
-        #演習1-2
+                sum_mv[0] -= 1
         if key_lst[pg.K_RIGHT]:
-                kk_rct.move_ip(2, 0)
+                sum_mv[0] += 2
+
+        #反映
+        kk_rct.move_ip(sum_mv)
 
         x = tmr % 3200
         screen.blit(bg_img, [-x, 0])
